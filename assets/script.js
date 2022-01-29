@@ -21,11 +21,16 @@ var questions = [
   },
   {
     question: "What is the final game of the NFL season called",
-    choices: ["The Finale", "The Championships", "The Superbowl", "The Cup"],
+    choices: ["The Finale", "The Championships", "The Super Bowl", "The Cup"],
     answer: "The Super Bowl"
   }
 ];
 
+
+var scoreList = localStorage.getItem("scores");
+var userScores = [];
+var scoresEl = document.querySelector("#scores");
+var startGameEl = document.querySelector("#start");
 var questionEl = document.querySelector("#question");
 var optionListEl = document.querySelector("#option-list");
 var questionResultEl = document.querySelector("#question-result");
@@ -34,8 +39,10 @@ var timerEl = document.querySelector("#timer");
 var questionIndex = 0;
 var correctCount = 0;
 
-var time = 60;
+var time = 10;
 var intervalId;
+
+
 
 function renderQuestion() {
 
@@ -65,6 +72,12 @@ function endQuiz() {
   clearInterval(intervalId);
   var body = document.body;
   body.innerHTML = "Game over, You scored " + correctCount;
+  console.log(scoreList)
+  userScores.push(scoreList);
+  userScores.push(correctCount);
+  localStorage.setItem("scores", userScores);
+
+  
 }
 
 function updateTime() {
@@ -74,14 +87,6 @@ function updateTime() {
     endQuiz();
   }
 }
-
-document
-  .querySelector("#change-question")
-  .addEventListener("click", function () {
-    questionIndex++;
-    renderQuestion();
-  });
-
 
 function nextQuestion() {
   questionIndex++;
@@ -107,5 +112,12 @@ function checkAnswer(event) {
   setTimeout(nextQuestion, 2000);
 }
 
-renderQuestion();
+startGameEl.addEventListener("click", function() {
+  renderQuestion()
+  startGameEl.style.display = "none"
+
+})
+
+  
 optionListEl.addEventListener("click", checkAnswer);
+
