@@ -43,7 +43,7 @@ var introEl = document.querySelector("intro-quiz");
 var questionIndex = 0;
 var correctCount = 0;
 
-var time = 5;
+var time = 60;
 var intervalId;
 
 
@@ -83,7 +83,7 @@ function endQuiz() {
   userScores.push(correctCount)
   localStorage.setItem("scores", userScores);
 
-  
+
 }
 
 function updateTime() {
@@ -118,12 +118,12 @@ function checkAnswer(event) {
   setTimeout(nextQuestion, 2000);
 }
 
-startGameEl.addEventListener("click", function() {
+startGameEl.addEventListener("click", function () {
   renderQuestion()
   startGameEl.style.display = "none"
- 
+
 })
 
-  
+
 optionListEl.addEventListener("click", checkAnswer);
 
