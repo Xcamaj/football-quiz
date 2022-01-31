@@ -1,0 +1,9 @@
+.start-btn {
+    padding: 10px;
+    font-weight: bolder;
+    color: black;
+    background-color: rgba(0, 255, 221, 0.295);
+    margin: 50px;
+    display: flex;
+    background: linear-gradient(45deg, rgba(0, 255, 221, 0.295), blue);
+}

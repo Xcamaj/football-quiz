@@ -26,6 +26,7 @@ var questions = [
   }
 ];
 
+// localStorage.setItem("scores", [])
 
 var scoreList = localStorage.getItem("scores");
 var userScores = [];
@@ -35,12 +36,17 @@ var questionEl = document.querySelector("#question");
 var optionListEl = document.querySelector("#option-list");
 var questionResultEl = document.querySelector("#question-result");
 var timerEl = document.querySelector("#timer");
+var introEl = document.querySelector("intro-quiz");
+
+
 
 var questionIndex = 0;
 var correctCount = 0;
 
-var time = 10;
+var time = 5;
 var intervalId;
+
+
 
 
 
@@ -74,7 +80,7 @@ function endQuiz() {
   body.innerHTML = "Game over, You scored " + correctCount;
   console.log(scoreList)
   userScores.push(scoreList);
-  userScores.push(correctCount);
+  userScores.push(correctCount)
   localStorage.setItem("scores", userScores);
 
   
@@ -115,7 +121,7 @@ function checkAnswer(event) {
 startGameEl.addEventListener("click", function() {
   renderQuestion()
   startGameEl.style.display = "none"
-
+ 
 })
 
   
